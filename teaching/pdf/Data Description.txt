@@ -1,0 +1,364 @@
+Description: Revision of 00001
+Samples selected:
+      IPUMS-CPS, ASEC 2016                              regular
+File Type:                    rectangular
+Case Selection:               No
+  Variable               Columns        Len    03/2016
+  REGION             H   1-2            2      X 
+  STATEFIP           H   3-4            2      X 
+  COUNTY             H   5-9            5      X 
+  AGE                P  10-11           2      X 
+  SEX                P  12              1      X 
+  RACE               P  13-15           3      X 
+  ASIAN              P  16-17           2      X 
+  MARST              P  18              1      X 
+  CITIZEN            P  19              1      X 
+  HISPAN             P  20-22           3      X 
+  EDUC               P  23-25           3      X 
+  LABFORCE           P  26              1      X 
+  WKSWORK1           P  27-28           2      X 
+  UHRSWORKLY         P  29-31           3      X 
+  UNION              P  32              1      X 
+  INCWAGE            P  33-39           7      X 
+  HEALTH             P  40              1      X 
+
+Variable Availability Key:
+All Years X - available in this sample
+All Years . - not available in this sample
+
+
+ REGION		Region and division
+		NORTHEAST REGION
+11		New England Division
+12		Middle Atlantic Division
+		MIDWEST REGION
+21		East North Central Division
+22		West North Central Division
+		SOUTH REGION
+31		South Atlantic Division
+32		East South Central Division
+33		West South Central Division
+		WEST REGION
+41		Mountain Division
+42		Pacific Division
+		STATE UNKNOWN
+97		State not identified
+
+ STATEFIP		State (FIPS code)
+01		Alabama
+02		Alaska
+04		Arizona
+05		Arkansas
+06		California
+08		Colorado
+09		Connecticut
+10		Delaware
+11		District of Columbia
+12		Florida
+13		Georgia
+15		Hawaii
+16		Idaho
+17		Illinois
+18		Indiana
+19		Iowa
+20		Kansas
+21		Kentucky
+22		Louisiana
+23		Maine
+24		Maryland
+25		Massachusetts
+26		Michigan
+27		Minnesota
+28		Mississippi
+29		Missouri
+30		Montana
+31		Nebraska
+32		Nevada
+33		New Hampshire
+34		New Jersey
+35		New Mexico
+36		New York
+37		North Carolina
+38		North Dakota
+39		Ohio
+40		Oklahoma
+41		Oregon
+42		Pennsylvania
+44		Rhode Island
+45		South Carolina
+46		South Dakota
+47		Tennessee
+48		Texas
+49		Utah
+50		Vermont
+51		Virginia
+53		Washington
+54		West Virginia
+55		Wisconsin
+56		Wyoming
+61		Maine-New Hampshire-Vermont
+65		Montana-Idaho-Wyoming
+68		Alaska-Hawaii
+69		Nebraska-North Dakota-South Dakota
+70		Maine-Massachusetts-New Hampshire-Rhode Island-Vermont
+71		Michigan-Wisconsin
+72		Minnesota-Iowa
+73		Nebraska-North Dakota-South Dakota-Kansas
+74		Delaware-Virginia
+75		North Carolina-South Carolina
+76		Alabama-Mississippi
+77		Arkansas-Oklahoma
+78		Arizona-New Mexico-Colorado
+79		Idaho-Wyoming-Utah-Montana-Nevada
+80		Alaska-Washington-Hawaii
+81		New Hampshire-Maine-Vermont-Rhode Island
+83		South Carolina-Georgia
+84		Kentucky-Tennessee
+85		Arkansas-Louisiana-Oklahoma
+87		Iowa-N Dakota-S Dakota-Nebraska-Kansas-Minnesota-Missouri
+88		Washington-Oregon-Alaska-Hawaii
+89		Montana-Wyoming-Colorado-New Mexico-Utah-Nevada-Arizona
+90		Delaware-Maryland-Virginia-West Virginia
+99		State not identified
+
+ AGE		Age
+00		Under 1 year
+01		1
+02		2
+03		3
+04		4
+05		5
+06		6
+07		7
+08		8
+09		9
+10		10
+11		11
+12		12
+13		13
+14		14
+15		15
+16		16
+17		17
+18		18
+19		19
+20		20
+21		21
+22		22
+23		23
+24		24
+25		25
+26		26
+27		27
+28		28
+29		29
+30		30
+31		31
+32		32
+33		33
+34		34
+35		35
+36		36
+37		37
+38		38
+39		39
+40		40
+41		41
+42		42
+43		43
+44		44
+45		45
+46		46
+47		47
+48		48
+49		49
+50		50
+51		51
+52		52
+53		53
+54		54
+55		55
+56		56
+57		57
+58		58
+59		59
+60		60
+61		61
+62		62
+63		63
+64		64
+65		65
+66		66
+67		67
+68		68
+69		69
+70		70
+71		71
+72		72
+73		73
+74		74
+75		75
+76		76
+77		77
+78		78
+79		79
+80		80
+81		81
+82		82
+83		83
+84		84
+85		85
+86		86
+87		87
+88		88
+89		89
+90		90 (90+, 1988-2002)
+91		91
+92		92
+93		93
+94		94
+95		95
+96		96
+97		97
+98		98
+99		99+
+
+ SEX		Sex
+1		Male
+2		Female
+9		NIU
+
+ RACE		Race
+100		White
+200		Black/Negro
+300		American Indian/Aleut/Eskimo
+650		Asian or Pacific Islander
+651		Asian only
+652		Hawaiian/Pacific Islander only
+700		Other (single) race, n.e.c.
+		Two or more races
+801		White-Black
+802		White-American Indian
+803		White-Asian
+804		White-Hawaiian/Pacific Islander
+805		Black-American Indian
+806		Black-Asian
+807		Black-Hawaiian/Pacific Islander
+808		American Indian-Asian
+809		Asian-Hawaiian/Pacific Islander
+810		White-Black-American Indian
+811		White-Black-Asian
+812		White-American Indian-Asian
+813		White-Asian-Hawaiian/Pacific Islander
+814		White-Black-American Indian-Asian
+815		American Indian-Hawaiian/Pacific Islander
+816		White-Black--Hawaiian/Pacific Islander
+817		White-American Indian-Hawaiian/Pacific Islander
+818		Black-American Indian-Asian
+819		White-American Indian-Asian-Hawaiian/Pacific Islander
+820		Two or three races, unspecified
+830		Four or five races, unspecified
+999		Blank
+
+ ASIAN		Asian subgroup
+10		Asian Indian
+20		Chinese
+30		Filipino
+40		Japanese
+50		Korean
+60		Vietnamese
+70		Other Asian
+99		NIU
+
+ MARST		Marital status
+1		Married, spouse present
+2		Married, spouse absent
+3		Separated
+4		Divorced
+5		Widowed
+6		Never married/single
+7		Widowed or Divorced
+9		NIU
+
+ CITIZEN		Citizenship status
+0		NIU
+1		Born abroad of American parents
+2		Naturalized citizen
+3		Not a citizen
+9		NIU
+
+ HISPAN		Hispanic origin
+000		Not Hispanic
+100		Mexican
+102		Mexican American
+103		Mexicano/Mexicana
+104		Chicano/Chicana
+108		Mexican (Mexicano)
+109		Mexicano/Chicano
+200		Puerto Rican
+300		Cuban
+400		Dominican
+500		Salvadoran
+		Other Spanish:
+401		Other Hispanic
+410		Central/South American
+411		Central American, (excluding Salvadoran)
+412		South American
+901		Do not know
+902		N/A (and no response 1985-87)
+
+ EDUC		Educational attainment recode
+000		NIU or no schooling
+001		NIU or blank
+002		None or preschool
+010		Grades 1, 2, 3, or 4
+011		Grade 1
+012		Grade 2
+013		Grade 3
+014		Grade 4
+020		Grades 5 or 6
+021		Grade 5
+022		Grade 6
+030		Grades 7 or 8
+031		Grade 7
+032		Grade 8
+040		Grade 9
+050		Grade 10
+060		Grade 11
+070		Grade 12
+071		12th grade, no diploma
+072		12th grade, diploma unclear
+073		High school diploma or equivalent
+080		1 year of college
+081		Some college but no degree
+090		2 years of college
+091		Associate's degree, occupational/vocational program
+092		Associate's degree, academic program
+100		3 years of college
+110		4 years of college
+111		Bachelor's degree
+120		5+ years of college
+121		5 years of college
+122		6+ years of college
+123		Master's degree
+124		Professional school degree
+125		Doctorate degree
+999		Missing/Unknown
+
+ LABFORCE		Labor force status
+0		NIU
+1		No, not in the labor force
+2		Yes, in the labor force
+
+ UNION		Union membership
+0		NIU
+1		No union coverage
+2		Member of labor union
+3		Covered by union but not a member
+
+ HEALTH		Health status
+1		Excellent
+2		Very good
+3		Good
+4		Fair
+5		Poor
