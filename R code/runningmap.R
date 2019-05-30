@@ -15,6 +15,8 @@ library(raster)
 library(leaflet)
 library(htmlwidgets)
 
+setwd('..')
+
 ## Necessary info from Strava api https://www.strava.com/settings/api
 app_name       <- 'dancullen' # chosen by user
 app_client_id  <- '35805' # an integer, assigned by Strava
@@ -83,4 +85,4 @@ for (i in loop) {
 map
 
 
-saveWidget(map, file="testmap.html")
+saveWidget(map, file="runningmap.html")
