@@ -6,7 +6,6 @@
 # http://www.databrew.cc/posts/strava.html
 # https://github.com/fawda123/rStrava
 library(rStrava) # devtools::install_github('fawda123/rStrava')
-library(gganimate) # devtools::install_github('dgrtwo/gganimate')
 library(dplyr)
 library(tidyr)
 library(purrr)
@@ -19,14 +18,9 @@ setwd("~/Google Drive/ECON/dancullen/dcullen.github.io")
 
 ## Necessary info from Strava api https://www.strava.com/settings/api
 app_name       <- 'dancullen' # chosen by user
-app_client_id  <- '35805' # an integer, assigned by Strava
+app_client_id  <- '35805'     # an integer, assigned by Strava
 app_secret     <- '1344b30906f6be7fa3498f1ff903c98a854bdff1' # an alphanumeric secret, assigned by Strava
 stoken <- httr::config(token = strava_oauth(app_name, app_client_id, app_secret))
-
-
-## Create blank map bounded by given lon and lat
-lons.range <- c(-119.9, -119.6)
-lats.range <- c(34.3, 34.58)
 
 my_data  <- get_activity_list(stoken)
 act_data <- compile_activities(my_data) 
@@ -58,15 +52,18 @@ lat_lon <- my_acts %>%
   unnest(., coords, distance)
 
 
-## tile options CartoDB.Positron , CartoDB.DarkMatter , Stamen.Toner
+## tile options CartoDB.Positron , CartoDB.DarkMatter , Stamen.Toner  
+## Create blank map bounded by given lon and lat
+lons.range <- c(-119.9, -119.6)
+lats.range <- c(34.3, 34.58)
+
 map <- leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
   addProviderTiles('CartoDB.Positron',
-                   options = providerTileOptions(noWrap = T)) %>%
+                   options = providerTileOptions(noWrap = T, minZoom=16, maxZoom=16)) %>%
   fitBounds(lng1 = min(lons.range), lat1 = max(lats.range), lng2 <- max(lons.range), lat2 = min(lats.range))
 
-
+## Loop through each activity to add activity to map
 loop <- unique(lat_lon$activity_no)
-
 for (i in loop) {
   lat_lon_single <- filter(lat_lon, activity_no == i)
   
