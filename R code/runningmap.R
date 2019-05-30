@@ -25,49 +25,34 @@ stoken <- httr::config(token = strava_oauth(app_name, app_client_id, app_secret)
 my_data  <- get_activity_list(stoken)
 act_data <- compile_activities(my_data) 
 
-desired_columns <- c('distance', 'elapsed_time', 'moving_time', 'start_date', 'start_date_local', 'type', 'map.summary_polyline', 'location_city', 'upload_id', 'start_latitude', 'start_longitude')
+## keep only activity id and map line
+keeps <- c('map.summary_polyline', 'upload_id')
+my_acts <- dplyr::select(act_data, match(keeps, names(act_data)))
 
-# keep only desired columns
-my_acts <- dplyr::select(act_data, match(desired_columns, names(act_data)))
-
-# transformations ####
-my_acts <- mutate(my_acts,
-                  activity_no = seq(1,n(), 1),
-                  elapsed_time = elapsed_time/60/60,
-                  moving_time = moving_time/60/60, 
-                  date = gsub("T.*$", '', start_date) %>%
-                    as.POSIXct(., format = '%Y-%m-%d'),
-                  EUdate = format(date, '%d/%m/%Y'),
-                  month = format(date, "%m"),
-                  day = format(date, "%d"),
-                  year = format(date, "%Y")) %>%
-  mutate_at(., c('month', 'day'), as.numeric)
-
+## convert map polyline to collection of lat lon coordinates
 lat_lon <- my_acts %>%
   filter(!is.na(map.summary_polyline)) %>%
-  nest(., -activity_no) %>%
+  nest(., -upload_id) %>%
   mutate(coords = map(data, get_latlon),
          distance = map(coords, ~get_dists(.x$lon, .x$lat))) %>%
   unnest(., data) %>%
   unnest(., coords, distance)
 
-
-## tile options CartoDB.Positron , CartoDB.DarkMatter , Stamen.Toner  
 ## Create blank map bounded by given lon and lat
 lons.range <- c(-119.9, -119.6)
 lats.range <- c(34.3, 34.58)
-
+## tile options CartoDB.Positron , CartoDB.DarkMatter , Stamen.Toner  
 map <- leaflet(options = leafletOptions(zoomControl = FALSE)) %>%
   addProviderTiles('CartoDB.Positron',
-                   options = providerTileOptions(noWrap = T, minZoom=16, maxZoom=16)) %>%
+                   options = providerTileOptions(noWrap = T, minZoom=12, maxZoom=12)) %>%
   fitBounds(lng1 = min(lons.range), lat1 = max(lats.range), lng2 <- max(lons.range), lat2 = min(lats.range))
 
 ## Loop through each activity to add activity to map
-loop <- unique(lat_lon$activity_no)
+loop <- unique(lat_lon$upload_id)
 for (i in loop) {
-  lat_lon_single <- filter(lat_lon, activity_no == i)
+  lat_lon_single <- filter(lat_lon, upload_id == i)
   
-  # reorder columns so lat lon are first
+  ## reorder columns so lat lon are first
   lat_lon_single <- dplyr::select(lat_lon_single, lat, lon, everything())
   
   interp <- raster::spLines(as.matrix(lat_lon_single[,1:2])) %>%
@@ -80,6 +65,5 @@ for (i in loop) {
                       color = 'blue', opacity = 1/4, weight = 2)
 }
 map
-
 
 saveWidget(map, file="runningmap.html")
