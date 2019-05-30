@@ -15,7 +15,7 @@ library(raster)
 library(leaflet)
 library(htmlwidgets)
 
-setwd('..')
+setwd("~/Google Drive/ECON/dancullen/dcullen.github.io")
 
 ## Necessary info from Strava api https://www.strava.com/settings/api
 app_name       <- 'dancullen' # chosen by user
