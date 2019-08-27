@@ -30,7 +30,7 @@ Inspired by [this post](https://www.reddit.com/r/CFB/comments/6s12dr/closest_sch
 
 I first created a spreadsheet of the location of each team's stadium and colors using data from Wikipedia and a website of [team colors](http://jim-nielsen.com/teamcolors/). I also downloaded a shapefile of U.S. counties from [the U.S. Census Bureau](https://www.census.gov/geo/maps-data/data/cbf/cbf_counties.html). 
 
-First, I loaded the stadium and color data into `R` using `read.csv`. Then, I converted the latitude and longitude variables into spatial coordinates using the `sp` package.
+First, I loaded the stadium and color data into `R` using `read.csv`, my data can be found [here](http://dancullen.me/teaching/pdf/NFL_Stadiums_Colors.csv). Then, I converted the latitude and longitude variables into spatial coordinates using the `sp` package.
 
 ```{r, echo = T, results = 'hide', warnings = F, message = F}
 
