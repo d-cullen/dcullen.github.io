@@ -22,6 +22,8 @@ app_client_id  <- '35805'     # an integer, assigned by Strava
 app_secret     <- '1344b30906f6be7fa3498f1ff903c98a854bdff1' # an alphanumeric secret, assigned by Strava
 stoken <- httr::config(token = strava_oauth(app_name, app_client_id, app_secret))
 
+key <- 'AIzaSyA75YCywGW4A5EoOMDCs5_ahMr8RJ2cYI0'
+
 my_data  <- get_activity_list(stoken)
 act_data <- compile_activities(my_data) 
 
@@ -33,7 +35,7 @@ my_acts <- dplyr::select(act_data, match(keeps, names(act_data)))
 lat_lon <- my_acts %>%
   filter(!is.na(map.summary_polyline)) %>%
   nest(., -upload_id) %>%
-  mutate(coords = map(data, get_latlon),
+  mutate(coords = map(data, key, get_latlon),
          distance = map(coords, ~get_dists(.x$lon, .x$lat))) %>%
   unnest(., data) %>%
   unnest(., coords, distance)
